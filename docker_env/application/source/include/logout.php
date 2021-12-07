@@ -1,4 +1,6 @@
 <?php
+require "clientinfo.php";
+require "signin.php";
 $servername = "database";
 $username = "root";
 $password = "root";
@@ -15,12 +17,9 @@ if ($conn->connect_error) {
 
     require "clientinfo.php";
 
-   
+
     session_unset();
     session_destroy();
 
     header("Location: ../index.php");
-    
 }
-
-?>

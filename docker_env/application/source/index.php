@@ -1,6 +1,6 @@
 <?php require "./include/signin.php" ?>
 <?php require "./include/signup.php" ?>
-<?php require "./include/clientinfo.php" ?>
+
 <?php require "./include/functions.php" ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,9 +17,10 @@
         }
 
         .movie {
+            border: 10px solid transparent;
             width: 300px;
             margin: 1rem;
-            border-radius: 3px;
+            border-radius: 10px;
             box-shadow: 0.2px 4px 5px rgba(0, 0, 0.1);
             background-color: rgba(92, 202, 202, 0.307);
             position: relative;
@@ -27,8 +28,25 @@
 
         }
 
+        .movie:hover {
+            width: 310px;
+            transition: width 0.3s linear 0s;
+            border: 2px solid transparent;
+            transition: border 0.5s ease-in-out 0s;
+            -webkit-box-shadow: 7px 13px 25px 5px #2c0707 inset;
+            -moz-box-shadow: 7px 13px 25px 5px #2c0707 inset;
+            box-shadow: 7px 13px 25px 5px #2c0707 inset;
+            -webkit-box-shadow: 7px 13px 25px 5px #000000;
+            -moz-box-shadow: 7px 13px 25px 5px #000000;
+            box-shadow: 7px 13px 25px 5px #000000;
+
+
+        }
+
         .movie img {
             width: 100%;
+
+
 
         }
 
@@ -39,6 +57,7 @@
             justify-content: space-between;
             padding: 0.5rem 1rem 1rem;
             letter-spacing: 0.5px;
+
         }
 
         .movie-info h3 {
@@ -158,14 +177,73 @@
                 font-size: 40px;
                 top: 15px;
                 right: 35px;
+
+
             }
+        }
+
+        #carousel {
+            margin-top: 100px;
+        }
+
+        .navigationel {
+            background: transparent !important;
+
+        }
+
+        .navigationel:hover {
+            background: black !important;
+            transition: width 0.1s linear 0s, background-color 3s ease-in-out 0 0s;
+        }
+
+        #cfgd img {
+            border-width: 1px;
+            border-style: solid;
+            border-radius: 50px;
+        }
+
+        #cfgd img:hover {
+            border: 7px solid transparent;
+            transition: border 0.5s ease-in-out 0s;
+            -webkit-box-shadow: 7px 13px 25px 5px #2c0707 inset;
+            -moz-box-shadow: 7px 13px 25px 5px #2c0707 inset;
+            box-shadow: 7px 13px 25px 5px #2c0707 inset;
+            -webkit-box-shadow: 7px 13px 25px 5px #000000;
+            -moz-box-shadow: 7px 13px 25px 5px #000000;
+            box-shadow: 7px 13px 25px 5px #000000;
+
+
+        }
+
+        .p-2 img {
+            border-width: 1px;
+            border-style: solid;
+            border-radius: 50px;
+            transform: border
+        }
+
+        .p-2 img:hover {
+            border: 7px solid transparent;
+            transition: border 0.5s ease-in-out 0s;
+            -webkit-box-shadow: 7px 13px 25px 5px #2c0707 inset;
+            -moz-box-shadow: 7px 13px 25px 5px #2c0707 inset;
+            box-shadow: 7px 13px 25px 5px #2c0707 inset;
+            -webkit-box-shadow: 7px 13px 25px 5px #000000;
+            -moz-box-shadow: 7px 13px 25px 5px #000000;
+            box-shadow: 7px 13px 25px 5px #000000;
+
+
+        }
+
+        #carousel {
+            margin-top: 100px;
         }
     </style>
 
     <!-- navbar -->
 
 
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark d-flex ">
+    <nav class="navbar navbar-expand-sm navigationel  bg-transparent navbar-dark  ">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Getflix</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -198,38 +276,40 @@
                     </li>
                 </ul>
                 <form class="d-flex">
-                    <input class="form-control p-2" type="search" placeholder="film or series" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">FIND</button>
+                    <input id="search-button" class="form-control p-2" type="search" placeholder="film or series" aria-label="Search">
+                    <!--<button class="btn btn-outline-success" type="submit">FIND</button>-->
                 </form>
-                <div class="">
+                <div class=" ml-auto">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0  align-self-end">
                         <li class="nav-item <?php toogle1() ?>" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
+                                <div class="modal-dialog " role="document">
+                                    <div class="modal-content text-white bg-dark ">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">Deconnexion</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
-                                        <div class="modal-body">hey nom de l'utilisateur Voulez-vous vraiment nous quitter ?</div>
+                                        <div class="modal-body ">
+                                            <h1>Cher <?php echo pre($_SESSION['firstname']); ?> , voulez-vous vraiment nous quitter ?!</h1>
+                                        </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">annuler</button>
-                                            <button type="button" class="btn btn-primary">Se deconnecter</button>
+                                            <button type="button" class="btn btn-primary" href=""><a href="./include/logout.php" class="text-white">Se déconnecter</a></button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <a class="nav-link active" aria-current="page" href=""><img src="https://img.icons8.com/external-wanicon-flat-wanicon/64/000000/external-exit-hotel-wanicon-flat-wanicon.png" width="35px" /></a>
+                            <a class="nav-link active" aria-current="page" href="#"><img src="https://img.icons8.com/external-wanicon-flat-wanicon/64/000000/external-exit-hotel-wanicon-flat-wanicon.png" width="35px" /></a>
                         </li>
 
                         <li class="nav-item <?php toogle1() ?>">
                             <a class="nav-link" href="profil.php"><img src="https://img.icons8.com/external-wanicon-flat-wanicon/64/000000/external-profile-user-interface-wanicon-flat-wanicon.png" width="35px" /></a>
                         </li>
-                        <li>
-
-                        </li>
+                        <?php if ($_SESSION['id']) {
+                            echo ' <li class="text-white bold nav-item align-self-center"> Bonjour ' . $_SESSION['firstname'] . ' !</li>';
+                        } ?>
                     </ul>
                 </div>
                 <?php require "index1.php"; ?>
@@ -293,134 +373,343 @@
     // ------------------FIN DEUXIEME TABLEAU  --------------------------------------------------------------------------
     ?>
     <!-- --------------------------CAROUSEL--------------------------------------------------------------------------------- -->
-    <div id="carousel">
+    <div id="carousel" class="container-fluid">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
 
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button " data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                <!-- ---------------- ----------------------BOUCLE BOUTON DE CHAQUE IMG DS CAROUSEL -----------------------------------------------------------------------------------------------------------------------------------------  -->
+
+                <!-- ---------------- ---------------------- BOUCLE BOUTON DE CHAQUE IMG DS CAROUSEL -----------------------------------------------------------------------------------------------------------------------------------------  -->
 
                 <?php for ($i = 3; $i <= 19; $i++) {
-                    echo '<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="' . $i . ' " aria-label="Slide ' . $i . '" ></button>';
+                    echo '<button class="bg-transparent" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="' . $i . ' " aria-label="Slide ' . $i . '" ></button>';
                 } ?>
 
 
             </div> <!-- ----------------DEBUT ----------------------CAROUSEL-----------------------------------------------------------------------------------------------------------------------------------------  -->
 
-            <div class="carousel-inner " style"margin=auto ">
-    <div class=" carousel-item active ">
-    <div class=" d-flex flex-row ">
-       <!-- ----------------------DEBUT----------------IMAGE CAROUSEL ITEM ACTIVE -----------------------------------------------------------------------------------------------------------------------------------------  -->
+            <div class="carousel-inner " style"margin=auto">
+                <div class=" carousel-item active  ">
+                    <div id="cfgd" class=" d-flex flex-row ">
+                        <!-- ----------------------DEBUT----------------IMAGE CAROUSEL ITEM ACTIVE -----------------------------------------------------------------------------------------------------------------------------------------  -->
+                        <?php
+                        $rand = rand(0, 8);
+                        $rande = rand(0, 8);
+                        $randee = rand(0, 8);
+                        $randeee = rand(0, 8);
+                        for ($i = 19; $i > 10; $i--) {
 
-    <img  class=" p-2 "  src=" <?php echo $urlimg . '' . $moviesArray2[rand(0, 19)]->poster_path; ?>" alt="jkl">
-                <img class="p-2 " src="<?php echo $urlimg . '' . $moviesArray2[rand(0, 19)]->poster_path; ?>" alt="jkl">
-                <img class="p-2  " src="<?php echo $urlimg . '' . $moviesArray2[rand(0, 19)]->poster_path; ?>" alt="jkl">
-                <img class="p-2  " src="<?php echo $urlimg . '' . $moviesArray2[rand(0, 19)]->poster_path; ?>" alt="jkl">
-                <!-- -------------------------FIN-------------IMAGE CAROUSEL ITEM ACTIVE -----------------------------------------------------------------------------------------------------------------------------------------  -->
+                            echo '<div class="p-2 " onClick="clic(this.id)" id="' . $tester = $moviesArray2[$i - $rand]->id . '"><img   src="' . $urlimg . '' . $moviesArray2[$i - $rand]->poster_path . '" alt="jkl"></div>';
+                            echo '<div class="p-2 " onClick="clic(this.id)" id="' . $tester = $moviesArray2[$i - $rande]->id . '"><img    src="' . $urlimg . '' . $moviesArray2[$i - $rande]->poster_path . '" alt="jkl"></div>';
+                            echo '<div class="p-2 " onClick="clic(this.id)" id="' . $tester = $moviesArray2[$i - $randee]->id . '"><img   src="' . $urlimg . '' . $moviesArray2[$i - $randee]->poster_path . '" alt="jkl"></div>';
+                            echo '<div class="p-2 " onClick="clic(this.id)" id="' . $tester = $moviesArray2[$i - $randeee]->id . '"><img    src="' . $urlimg . '' . $moviesArray2[$i - $randeee]->poster_path . '" alt="jkl"></div>';
+                            echo '<img   src="' . $urlimg . '' . $moviesArray[$i - $rand]->poster_path . '" alt="jkl">';
+                        }
+                        ?>
 
+                        <!-- -------------------------FIN-------------IMAGE CAROUSEL ITEM ACTIVE -----------------------------------------------------------------------------------------------------------------------------------------  -->
+
+                    </div>
+                </div>
+                <!-- --------------------------------------BOUCLE IMG POUR CAROUSSEL  -----------------------------------------------------------------------------------------------------------------------------------------  -->
+
+
+                <?php
+                for ($i = 0; $i <= 20; $i++) {
+
+                ?> <?php echo '<div class="carousel-item  " id ="' . $moviesArray[$i]->original_title . ' " >'; ?>
+                    <div class="d-flex flex-row ">
+
+
+
+
+                        <div class="p-2 " onClick="clic(this.id)" id="<?php echo  $tester = $moviesArray[$i + 8]->id; ?>"> <img src="<?php echo $urlimg . '' . $moviesArray[$i + 8]->poster_path; ?>" alt="jkl2"></div>
+                        <div class="p-2 " onClick="clic(this.id)" id="<?php echo  $tester = $moviesArray[$i + 10]->id; ?>"> <img src="<?php echo $urlimg . '' . $moviesArray[$i + 10]->poster_path; ?>" alt="jkl3"></div>
+                        <div class="p-2 " onClick="clic(this.id)" id="<?php echo  $tester = $moviesArray[$i + 4]->id; ?>"> <img src="<?php echo $urlimg . '' . $moviesArray[$i + 4]->poster_path; ?>" alt="jkl4"></div>
+                        <div class="p-2 " onClick="clic(this.id)" id="<?php echo  $tester = $moviesArray[$i + 3]->id; ?>"> <img src="<?php echo $urlimg . '' . $moviesArray[$i + 3]->poster_path; ?>" alt="jkl5"></div>
+                        <div class="p-2 " onClick="clic(this.id)" id="<?php echo  $tester = $moviesArray[$i + 2]->id; ?>"> <img src="<?php echo $urlimg . '' . $moviesArray[$i + 2]->poster_path; ?>" alt="jkl6"></div>
+                        <div class="p-2 " onClick="clic(this.id)" id="<?php echo  $tester = $moviesArray[$i + 1]->id; ?>"> <img src="<?php echo $urlimg . '' . $moviesArray[$i + 1]->poster_path; ?>" alt="jkl7"></div>
+                    </div>
+
+                <?php echo '</div>';
+                } ?>
+
+
+                <!-- ----------------------------------------BOUTON CAROUSEL ---------------------------------------------- -->
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
         </div>
-        <!-- --------------------------------------BOUCLE IMG POUR CAROUSSEL  -----------------------------------------------------------------------------------------------------------------------------------------  -->
+
+        <!--                                               CHANGEMENT BORIS  -->
+        <script type='text/javascript'>
+            function test4() {
 
 
-        <?php
-        for ($i = 0; $i <= 9; $i++) {
 
-        ?> <?php echo '<div class="carousel-item   " id ="' . $moviesArray[$i]->original_title . ' " >'; ?>
-            <div class="d-flex flex-row ">
-                <div class=" p-2  "> <img src="<?php echo $urlimg . '' . $moviesArray[$i + 5]->poster_path; ?>" alt="jkl"> </div>
-                <!-- <div class="p-2 ">    <img src="<?php echo $urlimg . '' . $moviesArra2[$i + 6]->poster_path; ?>" alt="jkl1"></div>  -->
-                <div class="p-2 "> <img src="<?php echo $urlimg . '' . $moviesArray2[$i + 8]->poster_path; ?>" alt="jkl2"></div>
-                <div class="p-2 "> <img src="<?php echo $urlimg . '' . $moviesArray2[$i + 10]->poster_path; ?>" alt="jkl3"></div>
-                <div class="p-2 "> <img src="<?php echo $urlimg . '' . $moviesArray2[$i + 4]->poster_path; ?>" alt="jkl4"></div>
-                <div class="p-2 "> <img src="<?php echo $urlimg . '' . $moviesArray2[$i + 3]->poster_path; ?>" alt="jkl5"></div>
-                <div class="p-2 "> <img src="<?php echo $urlimg . '' . $moviesArray2[$i + 2]->poster_path; ?>" alt="jkl6"></div>
-                <div class="p-2 "> <img src="<?php echo $urlimg . '' . $moviesArray2[$i + 1]->poster_path; ?>" alt="jkl7"></div>
-            </div>
+                alert('You  must be logged ! ');
 
-        <?php echo '</div>';
-        } ?>
+            }
+        </script>
 
 
-        <!-- ----------------------------------------BOUTON CAROUSEL ---------------------------------------------- -->
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
+
+
+        <div id="main">
+            <!-- --------------------------------------BOUCEL AFFICHAGE FICHES DES FILM -----------------------------------------------------------------------------------------------------------------------------------------  -->
+
+            <?php
+
+
+            for ($i = 0; $i <= 19; $i++) {
+
+            ?> <?php echo '<div class="movie" id ="' . $moviesArray[$i]->original_title . ' " >'; ?>
+
+                <img src="<?php echo $urlimg . '' . $moviesArray[$i]->poster_path; ?>" alt="èoèèèç">
+                <div class="movie-info ">
+
+                    <h3><?php echo  $moviesArray[$i]->original_title; ?> </h3>
+                    <span class=" "><?php echo  $moviesArray[$i]->vote_average; ?> </span>
+                </div>
+
+                <div class="   overview  bg-dark  rounded text-light">
+
+                    <h3>Résumé</h3>
+                    <?php echo  ' ' . $moviesArray[$i]->overview; ?>
+
+                    <br />
+                    <div class="dateRelease"> </div>
+                    <div class ="<?php toogle1() ?>">
+                    <button class="know-more btn btn-dark" onClick="clic(this.id)" id="<?php echo  $tester = $moviesArray[$i]->id; ?>"> Watch It</button>
+                    </div>
+                </div>
+        </div>
+    <?php };
+            echo  '</div>'; ?>
     </div>
-    </div>
-    <div id="main">
-        <!-- --------------------------------------BOUCEL AFFICHAGE FICHES DES FILM -----------------------------------------------------------------------------------------------------------------------------------------  -->
 
-        <?php
-
-
-        for ($i = 0; $i <= 19; $i++) {
-
-        ?> <?php echo '<div class="movie" id ="' . $moviesArray[$i]->original_title . ' " >'; ?>
-
-            <img src="<?php echo $urlimg . '' . $moviesArray[$i]->poster_path; ?>" alt="èoèèèç">
-            <div class="movie-info">
-
-                <h3><?php echo  $moviesArray[$i]->original_title; ?> </h3>
-                <span class=" "><?php echo  $moviesArray[$i]->vote_average; ?> </span>
-            </div>
-
-            <div class="overview  bg-success  rounded text-light">
-
-                <h3>Résumé</h3>
-                <?php echo  ' ' . $moviesArray[$i]->overview; ?>
-
-                <br />
-                <div class="dateRelease"> </div>
-                <button class="know-more btn btn-dark" onClick="openNav() , clic(this.id) " id="<?php echo  $tester = $moviesArray[$i]->id; ?>"> <?php echo $moviesArray[$i]->id; ?></button>
-            </div>
-    </div>
-<?php };
-        echo  '</div>'; ?>
-</div>
-
-<!-- HTML OverLAY VIDEOS TEST-----------------------------------------------------------------------------------------------------------------  -->
-<div id="myNav" class="overlay">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <div class="overlay-content">
-        <div id="popo" class="text-white ">
-
+    <!-- HTML OverLAY VIDEOS TEST-----------------------------------------------------------------------------------------------------------------  -->
+    <div id="myNav" class="overlay <?php toogle1()?>">
+        <a href="javascript:void(0)" class="closebtn pt-5" onclick="closeNav()">&times;</a>
+        <div class="overlay-content">
 
         </div>
+        <div id="popo" class="text-white <?php toogle1()?>">
+                
+        </div>
+        <div class="card<?php toogle1()?>  bg-transparent text-light" id="card" >
+            <div class="row d-flex justify-content-center bg-transparent text-light <?php toogle1()?>">
+                <div class="col-6 bg-transparent text-light justify-content-center">
+                    <div class="comment-box ml-2 bg-transparent text-light">
+                        <div class="rating justify-content-center">
+                            <div class="comment-area justify-content-center"> <textarea id="text" class="form-control bg-transparent text-light" placeholder="What is your view <?php echo pre($_SESSION['firstname']);?>?" rows="2" value=""></textarea> </div>
+                            <div class="comment-btns mt-2 justify-content-center">
+                                <div class="row justify-content-center">
+                                <div class="col-6 justify-content-center ">
+                                <div class="justify-content-center text-align-center d-flex"> <button onClick="addC(this.id)" id="<?php echo $moviesArray[$i]->id; ?>" class="know-more btn btn-dark justify-content-center buttonadd">Add Your Comment <i class="fa fa-long-arrow-right ml-1"></i></button> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
     </div>
-</div>
 
-<script>
-    // -----------------------creation du liens du trailers -------------------------------------------------------------
-    let idFIlms;
+    <script>
+        // -----------------------creation du liens du trailers -------------------------------------------------------------
+        let idFIlms;
+        let filminfos = "http://api.themoviedb.org/3/movie/" + idFIlms + "/videos?api_key=92a6e3e8847a6472bbf29ab8fa36f02c";
+        
+        function addC(idFIlms) {
+                let myNav = document.getElementById("myNav");
+                const date = new Date();
+                const commentDate = `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}` ;
+                let section = document.getElementById("card");
+                let textarea = document.getElementById("text");
+                let text = textarea.value;
+                let userComment = document.createElement("div");
+                let wrapper = document.createElement("div");
+                wrapper.setAttribute('id', '${idFIlms}');
+                wrapper.classList.add( "d-flex", "justify-content-center", "text-center", "row", "bg-transparent", "m-2", "text-light");
+                let comDiv = document.createElement("div");
+                let comSpan = document.createElement("span");
+                comSpan.classList.add("text-primary", "d-flex", "justify-content-center", );
+                comSpan.innerHTML = "@<?php echo pre($_SESSION['firstname']);?>" + "&nbsp" + commentDate;
+                userComment.classList.add( "d-flex", "justify-content-center", "text-center", "bg-transparent", "border", "rounded", "border-dark", "m-2", "text-light");
+                comDiv.innerHTML = text ;
+                comDiv.appendChild(comSpan);
+                userComment.appendChild(comDiv);
+                wrapper.appendChild(userComment);
+                section.appendChild(wrapper);
+                myNav.appendChild(section);
+                document.querySelector("buttonadd").addEventListener("click", function () {     
+                textarea.value = "";
+                });
+            }
 
-    function clic(idFIlms) {
-        document.getElementById('popo').innerHTML = "affichage du idFIlms :" + idFIlms + " ";
-        let films = document.createElement('div class="text-white');
-        films.innerHTML = " ";
 
 
-    }
 
-    // JAVASCRIPT---------- OverLAY VIDEOS TEST-----------------------------------------------------------------------------------------------------------------  -->
 
-    function openNav() {
-        document.getElementById("myNav").style.width = "100%";
-    }
 
-    function closeNav() {
-        document.getElementById("myNav").style.width = "0%";
-    }
-</script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+
+        function clic(idFIlms) {
+            document.getElementById("myNav").style.width = "100%";
+            fetch("http://api.themoviedb.org/3/movie/" + idFIlms + "/videos?api_key=92a6e3e8847a6472bbf29ab8fa36f02c")
+                .then(res => res.json())
+                .then(videoData => (
+                    document.getElementById("popo").innerHTML = `<div class="<?php toogle1()?> d-flex justify-content-center bg-transparent text-light"><iframe width="850" height="530" id="youtube" src="https://www.youtube.com/embed/${videoData.results[0].key}?autoplay=1&enablejsapi=1&rel=0;modestbranding=1&showsearch=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>   
+                    </div>`
+                ))
+                .catch(error => console.log("ERROR"))
+
+
+
+
+
+
+        }
+
+        // JAVASCRIPT---------- OverLAY VIDEOS TEST-----------------------------------------------------------------------------------------------------------------  -->
+
+
+
+        function closeNav() {
+            document.getElementById("myNav").style.width = "0%";
+            document.getElementById("popo").innerHTML = "";
+        }
+        
+        $(document).ready(function(){ $('body').find('img[alt$="www.000webhost.com"]').remove(); }); 
+        
+        
+        //fonction recherche sur Submit button
+        const API_KEY = 'api_key=92a6e3e8847a6472bbf29ab8fa36f02c';
+        const BASE_URL = 'https://api.themoviedb.org/3/';
+        const API_URL = BASE_URL + 'discover/movie?sort_by=popularity.desc&' + API_KEY;
+        const IMG_URL = 'https://image.tmdb.org/t/p/w500/';
+
+        const API_GENRE = 'https://api.themoviedb.org/3/search/movie?api_key=92a6e3e8847a6472bbf29ab8fa36f02c&query='
+        let input_search;
+        let url_genre;
+
+        fetch('https://api.themoviedb.org/3/search/movie?api_key=92a6e3e8847a6472bbf29ab8fa36f02c&query=er')
+            .then(res => res.json())
+            .then(res => console.log(res))
+
+        document.getElementById("search-button").addEventListener('keyup', (eve) => {
+            input_search = eve.target.value;
+            url_genre = API_GENRE + input_search;
+
+            if (input_search == "")
+                url_genre = API_URL;
+
+            let main = document.getElementById("main")
+            let child = main.lastElementChild;
+            while (child) {
+                main.removeChild(child);
+                child = main.lastElementChild;
+            }
+
+            console.log(url_genre)
+            fetch(url_genre).then(res => res.json())
+                .then(data => {
+                    console.log("MOVIE " + data)
+                    list_data = data.results;
+                    list_data.forEach(movie => {
+
+                        movie_title = movie.title;
+
+                        //afficher le film si il contient une partie de l'input
+                        if (movie_title.toLowerCase().includes(input_search.toLowerCase())) {
+                            const {
+                                title,
+                                poster_path,
+                                vote_average,
+                                overview,
+                                release_date,
+                                original_language,
+                                id
+                            } = movie;
+
+                            //creation de la div
+                            const movieEl = document.createElement('div');
+                            //creation de la classe
+                            movieEl.classList.add('movie');
+                            movieEl.innerHTML = `
+                <img  src="${poster_path? IMG_URL + poster_path: "http://via.placeholder.com/1080x1580" }" alt="${title}">
+                <div class="movie-info">
+                
+                    <h3>${title}</h3>
+                    <span class="bg-${getColor(vote_average)}">${vote_average}</span>
+                </div>
+               
+                <div class="overview  bg-dark rounded text-light">
+                
+                    <h3>Résumé</h3>
+                    ${overview}
+                    <br/> 
+                    <div class = '<?php toogle1(); ?>'>
+                    <button class="know-more btn btn-dark " onclick="clic('${id}')" id="${id}">  Watch It</button> <br/>
+                    </div>
+                    
+                </div>
+            
+            `;
+
+
+                            main.appendChild(movieEl);
+
+
+                        }
+
+                        // else{
+                        //   console.log("ID ......" + movie.id)
+                        //   console.log("TITLE .... " + movie.title)
+                        //   let id_movie = movie.id;
+                        //   let parent = document.getElementById(id_movie).parentElement.parentElement;
+                        //   parent.remove();
+                        // }
+
+
+
+                    })
+                })
+            console.log("SEARCH : " + input_search);
+            //toute la div parent à supprimer
+
+
+        })
+
+        function getColor(vote) {
+            if (vote >= 8) {
+                return ' ';
+
+            } else if (vote >= 7) {
+                return 'warning';
+            } else {
+                return 'danger';
+            }
+        };
+    </script>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 
 </body>
 

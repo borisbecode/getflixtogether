@@ -1,9 +1,9 @@
 <?php
 // for the love of connection
-$servername = "database";
-$username = "root";
-$password = "root";
-$dbname = "getflix";
+$servername = "localhost";
+$username = "id18030110_suprastar444";
+$password = "7F2B}Qzo/QU3<ZB(";
+$dbname = "id18030110_getflix";
 
 // test
 $conn = mysqli_connect($servername, $username, $password, $dbname);

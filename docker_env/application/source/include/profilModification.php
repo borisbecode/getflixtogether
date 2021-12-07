@@ -53,23 +53,71 @@ if (isset($_POST['submitemail'])) {
 
         $message = "mail Changed";
 
-
-
-
-
-
-
-
-
-
-
-
-
-
         $_SESSION['email'] = $_POST["newmail"];
 
         header("Refresh:0");
     } else {
         $message = "Current mail is not correct";
+    }
+}
+
+
+
+
+/* AJOUTNAME */
+
+if (isset($_POST['submitname'])) {
+
+    $result = mysqli_query($conn, "SELECT * from users WHERE id='" . $_SESSION["id"] . "'");
+    $row = mysqli_fetch_array($result);
+
+    if ($_POST["newname"]) {
+        mysqli_query($conn, "UPDATE users set firstname='" . $_POST["newname"] . "' WHERE id='" . $_SESSION["id"] . "'");
+
+        $message = "mail Changed";
+
+        $_SESSION['firstname'] = $_POST["newname"];
+
+        header("Refresh:0");
+    }
+
+    if ($_POST["newlastname"]) {
+        mysqli_query($conn, "UPDATE users set lastname='" . $_POST["newlastname"] . "' WHERE id='" . $_SESSION["id"] . "'");
+
+        $message = "mail Changed";
+
+        $_SESSION['lastname'] = $_POST["newlastname"];
+
+        header("Refresh:0");
+    }
+}
+
+
+
+/* AJOUTdate */
+
+if (isset($_POST['submitdate'])) {
+
+    $result = mysqli_query($conn, "SELECT * from users WHERE id='" . $_SESSION["id"] . "'");
+    $row = mysqli_fetch_array($result);
+
+    if ($_POST["date"]) {
+        mysqli_query($conn, "UPDATE users set bday='" . $_POST["date"] . "' WHERE id='" . $_SESSION["id"] . "'");
+
+        $message = "date Changed";
+
+        $_SESSION['bday'] = $_POST["date"];
+
+        header("Refresh:0");
+    }
+
+    if ($_POST["adresse"]) {
+        mysqli_query($conn, "UPDATE users set addres='" . $_POST["adresse"] . "' WHERE id='" . $_SESSION["id"] . "'");
+
+        $message = "adress Changed";
+
+        $_SESSION['addres'] = $_POST["adresse"];
+
+        header("Refresh:0");
     }
 }
